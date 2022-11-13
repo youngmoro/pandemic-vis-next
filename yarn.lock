@@ -1645,10 +1645,10 @@ react-dom@18.2.0:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
 
-react-globe.gl@^2.22.5:
-  version "2.22.5"
-  resolved "https://registry.yarnpkg.com/react-globe.gl/-/react-globe.gl-2.22.5.tgz#5cbd9e54939eddc4ae39b35bf3d5fbd9836dfb40"
-  integrity sha512-nDDr3Tu/MKyG7eqr7rnFfN5NZLHe6bsRJPLgn6lpYflPct5Qt5y6GduA2vRVAQBP0AuHZU+5xWUpbXZUEfFg2Q==
+react-globe.gl@2.22.7:
+  version "2.22.7"
+  resolved "https://registry.yarnpkg.com/react-globe.gl/-/react-globe.gl-2.22.7.tgz#7db5a3041cc037aa2993e02bea6d4cfff65b2df6"
+  integrity sha512-hewY9UzMab6chqvButI63ZvutDQ/4t/gGQmQjf2/0q6MvaDkbUDrEaXAXBc7ZZbcRmuglI5V7Bj4Ffln8Vn8fg==
   dependencies:
     globe.gl "^2.26"
     prop-types "^15.8"
