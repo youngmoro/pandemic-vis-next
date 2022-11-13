@@ -17,7 +17,7 @@ const GlobeDefault = () => {
   return (
     <Globe
       width={800}
-      backgroundImageUrl="universe.jpg"
+      backgroundImageUrl="whiteuniverse.png"
       globeImageUrl="earth-virus.jpeg"
       pointsData={gData}
       pointAltitude="size"
