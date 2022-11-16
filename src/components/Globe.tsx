@@ -11,8 +11,13 @@ const GlobeDefault = () => {
   const gData = strains.map((e) => ({
     lat: e.lat,
     lng: e.lon,
+    //新しいウイルスほど長い
     size: Number(e.divergence) * 0.01,
-    color: "#881131",
+    //新しい日付ほど赤い、細い
+    color: ["#aa113188", "#883333", "#666666", "#ffffff"][
+      2022 - Number(new Date(e.date).getFullYear())
+    ],
+    r: 2023 - Number(new Date(e.date).getFullYear()),
   }));
 
   return (
@@ -24,7 +29,7 @@ const GlobeDefault = () => {
       pointsData={gData}
       pointAltitude="size"
       pointColor="color"
-      pointRadius={1}
+      pointRadius="r"
       waitForGlobeReady={true}
     />
   );
