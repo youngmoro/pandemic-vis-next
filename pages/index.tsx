@@ -14,9 +14,10 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>Pandemic Visualization</h1>
-        <span className={styles.description}>gio.js</span>
-        <Earth />
-        <span className={styles.description}>react-globe.gl</span>
+        <div style={{ marginBottom: "30px" }} />
+        {/* <span className={styles.description}>gio.js</span> */}
+        {/* <Earth /> */}
+        {/* <span className={styles.description}>react-globe.gl</span> */}
         <Globe />
       </main>
     </div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
+import strains from "../data/strains";
 
 const GlobeDefault = () => {
   const Globe = dynamic(() => import("react-globe.gl"), {
@@ -7,22 +8,23 @@ const GlobeDefault = () => {
     ssr: false,
   });
 
-  const N = 1000;
-  const gData = [...Array(N).keys()].map(() => ({
-    lat: (Math.random() - 0.5) * 180,
-    lng: (Math.random() - 0.5) * 360,
-    size: Math.random() / 3,
+  const gData = strains.map((e) => ({
+    lat: e.lat,
+    lng: e.lon,
+    size: Number(e.divergence) * 0.01,
     color: "#881131",
   }));
+
   return (
     <Globe
-      width={800}
+      width={700}
+      height={700}
       backgroundImageUrl="whiteuniverse.png"
       globeImageUrl="earth-virus.jpeg"
       pointsData={gData}
       pointAltitude="size"
       pointColor="color"
-      pointRadius={2}
+      pointRadius={1}
       waitForGlobeReady={true}
     />
   );

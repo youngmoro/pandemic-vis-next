@@ -1,4 +1,4 @@
-const data = [
+const sampleData = [
   {
     e: "JP",
     i: "CN",
@@ -26,4 +26,4 @@ const data = [
   },
 ];
 
-export default data;
+export default sampleData;
