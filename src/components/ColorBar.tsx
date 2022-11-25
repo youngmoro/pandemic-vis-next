@@ -16,6 +16,13 @@ const ColorBar = () => {
         <span>2019</span>
         <span>2022</span>
       </div>
+      <div style={{ marginBottom: "30px" }} />
+      <div style={{ marginBottom: "5px" }}>divergence</div>
+      <div style={triangle}></div>
+      <div style={flex}>
+        <span>0</span>
+        <span>100</span>
+      </div>
     </div>
   );
 };
@@ -36,4 +43,10 @@ const bar = {
 const flex = {
   display: "flex",
   justifyContent: "space-between",
+};
+
+const triangle = {
+  borderTop: "20px solid transparent",
+  borderRight: "200px solid #fff",
+  borderBottom: "20px solid transparent",
 };
