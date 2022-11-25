@@ -1,4 +1,5 @@
 import Head from "next/head";
+import ColorBar from "../src/components/ColorBar";
 import Globe from "../src/components/Globe";
 import styles from "../styles/Home.module.css";
 
@@ -17,8 +18,12 @@ export default function Home() {
         {/* <span className={styles.description}>gio.js</span> */}
         {/* <Earth /> */}
         {/* <span className={styles.description}>react-globe.gl</span> */}
-        <div style={{ height: "700px" }}>
-          <Globe />
+        <div style={{ width: "1200px", height: "700px", display: "flex" }}>
+          <div style={{ width: "250px" }} />
+          <div style={{ width: "700px" }}>
+            <Globe />
+          </div>
+          <ColorBar />
         </div>
       </main>
     </div>
