@@ -17,7 +17,9 @@ export default function Home() {
         {/* <span className={styles.description}>gio.js</span> */}
         {/* <Earth /> */}
         {/* <span className={styles.description}>react-globe.gl</span> */}
-        <Globe />
+        <div style={{ height: "700px" }}>
+          <Globe />
+        </div>
       </main>
     </div>
   );

@@ -1,13 +1,24 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import strains from "../data/strains";
 import GUI from "lil-gui";
 
 const GlobeDefault = () => {
+  const [startYear, setStartYear] = useState(2019);
+  const [endYear, setEndYear] = useState(2022);
   let gui;
+  const params = {
+    startYear: startYear,
+    endYear: endYear,
+  };
   if (typeof document !== "undefined") {
     gui = new GUI();
-    gui.add(document, "title");
+    gui.add(params, "startYear").onFinishChange((e: number) => {
+      setStartYear(e);
+    });
+    gui.add(params, "endYear").onFinishChange((e: number) => {
+      setEndYear(e);
+    });
   }
 
   const Globe = dynamic(() => import("react-globe.gl"), {
@@ -40,16 +51,39 @@ const GlobeDefault = () => {
     return rgb2hex([red, 100, blue]);
   };
 
-  const gData = strains.map((e) => ({
-    lat: e.lat,
-    lng: e.lon,
-    //新しいウイルスほど長い、細い
-    size: Number(e.divergence) * 0.005,
-    r: 0.5 + 25 / Number(e.divergence),
-    //新しい日付ほど赤い
-    color: calColor(new Date(e.date)),
-    label: e.division,
-  }));
+  const [gData, setgData] = useState(
+    strains.map((e) => ({
+      lat: e.lat,
+      lng: e.lon,
+      //新しいウイルスほど長い、細い
+      size: Number(e.divergence) * 0.005,
+      r: 0.5 + 25 / Number(e.divergence),
+      //新しい日付ほど赤い
+      color: calColor(new Date(e.date)),
+      label: e.division,
+    }))
+  );
+
+  useEffect(() => {
+    setgData(
+      strains
+        .filter(
+          (e) =>
+            new Date(e.date).getFullYear() >= startYear &&
+            new Date(e.date).getFullYear() <= endYear
+        )
+        .map((e) => ({
+          lat: e.lat,
+          lng: e.lon,
+          //新しいウイルスほど長い、細い
+          size: Number(e.divergence) * 0.005,
+          r: 0.5 + 25 / Number(e.divergence),
+          //新しい日付ほど赤い
+          color: calColor(new Date(e.date)),
+          label: e.division,
+        }))
+    );
+  }, [startYear, endYear]);
 
   return (
     <Globe
