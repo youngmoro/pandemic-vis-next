@@ -60,7 +60,7 @@ const GlobeDefault = () => {
       r: 0.5 + 25 / Number(e.divergence),
       //新しい日付ほど赤い
       color: calColor(new Date(e.date)),
-      label: e.division,
+      label: "division:" + e.division + "\ndivergence:" + e.divergence,
     }))
   );
 
@@ -80,7 +80,7 @@ const GlobeDefault = () => {
           r: 0.5 + 25 / Number(e.divergence),
           //新しい日付ほど赤い
           color: calColor(new Date(e.date)),
-          label: e.division,
+          label: "division:" + e.division + "\ndivergence:" + e.divergence,
         }))
     );
   }, [startYear, endYear]);
