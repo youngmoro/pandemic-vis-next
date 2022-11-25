@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Earth from "../src/components/Earth";
 import Globe from "../src/components/Globe";
 import styles from "../styles/Home.module.css";
 

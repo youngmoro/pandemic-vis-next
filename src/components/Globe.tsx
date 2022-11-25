@@ -1,8 +1,15 @@
 import React, { useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import strains from "../data/strains";
+import GUI from "lil-gui";
 
 const GlobeDefault = () => {
+  let gui;
+  if (typeof document !== "undefined") {
+    gui = new GUI();
+    gui.add(document, "title");
+  }
+
   const Globe = dynamic(() => import("react-globe.gl"), {
     // suspense: true,
     ssr: false,
