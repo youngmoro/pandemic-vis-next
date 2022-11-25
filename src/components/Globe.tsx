@@ -6,20 +6,20 @@ import GUI from "lil-gui";
 const GlobeDefault = () => {
   const [startYear, setStartYear] = useState(2019);
   const [endYear, setEndYear] = useState(2022);
-  let gui;
   const params = {
     startYear: startYear,
     endYear: endYear,
   };
-  if (typeof document !== "undefined") {
-    gui = new GUI();
+
+  useEffect(() => {
+    const gui = new GUI();
     gui.add(params, "startYear").onFinishChange((e: number) => {
       setStartYear(e);
     });
     gui.add(params, "endYear").onFinishChange((e: number) => {
       setEndYear(e);
     });
-  }
+  }, []);
 
   const Globe = dynamic(() => import("react-globe.gl"), {
     // suspense: true,
