@@ -1,10 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, MutableRefObject } from "react";
 import dynamic from "next/dynamic";
 import strains from "../data/strains";
 import GUI from "lil-gui";
 import { mapping } from "../utils/cal";
+import Globe, { GlobeMethods } from "react-globe.gl";
 
 const GlobeDefault = () => {
+  const globeEl = useRef<GlobeMethods>();
   const [startYear, setStartYear] = useState(2019);
   const [endYear, setEndYear] = useState(2022);
   const params = {
@@ -22,10 +24,13 @@ const GlobeDefault = () => {
     });
   }, []);
 
-  const Globe = dynamic(() => import("react-globe.gl"), {
-    // suspense: true,
-    ssr: false,
-  });
+  useEffect(() => {
+    if (globeEl.current != undefined) {
+      console.log(globeEl.current);
+      globeEl.current.controls().autoRotate = true;
+      globeEl.current.controls().autoRotateSpeed = 1;
+    }
+  }, [globeEl]);
 
   const [gData, setgData] = useState(mapping(strains));
 
@@ -43,6 +48,7 @@ const GlobeDefault = () => {
 
   return (
     <Globe
+      ref={globeEl}
       width={700}
       height={700}
       backgroundImageUrl="whiteuniverse.png"
@@ -55,6 +61,7 @@ const GlobeDefault = () => {
       pointLabel="label"
       pointResolution={3}
       waitForGlobeReady={true}
+      animateIn={true}
     />
   );
 };

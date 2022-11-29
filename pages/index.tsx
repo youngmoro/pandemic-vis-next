@@ -1,6 +1,7 @@
 import Head from "next/head";
+import Image from "next/image";
 import ColorBar from "../src/components/ColorBar";
-import Globe from "../src/components/Globe";
+import GlobeWrap from "../src/components/GlobeWrap";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -19,9 +20,17 @@ export default function Home() {
         {/* <Earth /> */}
         {/* <span className={styles.description}>react-globe.gl</span> */}
         <div style={{ width: "1200px", height: "700px", display: "flex" }}>
-          <div style={{ width: "250px" }} />
+          <div style={{ width: "250px" }}>
+            <Image
+              src={"/covid-19.png"}
+              alt={""}
+              width={200}
+              height={200}
+              style={{ marginRight: "50px", marginTop: "50px" }}
+            />
+          </div>
           <div style={{ width: "700px" }}>
-            <Globe />
+            <GlobeWrap />
           </div>
           <ColorBar />
         </div>
