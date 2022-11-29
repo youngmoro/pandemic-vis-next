@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState, MutableRefObject } from "react";
-import dynamic from "next/dynamic";
+import React, { useEffect, useRef, useState } from "react";
 import strains from "../data/strains";
 import GUI from "lil-gui";
 import { mapping } from "../utils/cal";
